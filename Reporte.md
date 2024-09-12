@@ -6,3 +6,14 @@ Primero, implementamos un operador de intercambio de dos elementos consecutivos 
 3. Si el índice proporcionado no es válido, se retorna simplemente la copia de la lista original.
 4. Si el índice proporcionado es válido, intercambiamos el elemento al que corresponde el índice con el siguiente en la lista y retornamos la lista modificada. 
 
+Luego, implementamos un operador de intercambio de dos elementos no necesariamente consecutivos:
+1. Definimos una función llamada `OperadorNoConsecutivo()` que toma una lista `permutacion` y dos números (`indice1` y `indice2`).
+2. Creamos una nueva copia de la lista `permutacion` para no modificar la original y la guardamos en `nuevaPermutación`.
+3. Si alguno de los índices proporcionados no es válido o estos son iguales, se retorna simplemente la copia de la lista original.
+4. Si los índices proporcionados son válidos y distintos, se intercambian los elementos correspondientes a los índices y se retorna la lista modificada.
+
+Finalmente, implementamos un operador que parte a la lista en dos partes y las intercambia:
+1. Definimos una función llamada `OperadorInvParticion()` que recibe como parámetros una permutación (en formato de lista) y un índice.
+2. Creamos una nueva copia de la lista `permutacion` para no modificar la original y la guardamos en `nuevaPermutación`.
+3. Si el índice proporcionado no es válido, se retorna simplemente la copia de la lista original.
+4. Si el índice proporcionado es válido, dividimos la lista en dos partes: la primera parte va desde el primer elemento (que tiene índice `0`) hasta el índice dado y la segunda desde `indice + 1` al final de la lista. Se retorna la lista modificada.
