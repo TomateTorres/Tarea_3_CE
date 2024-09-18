@@ -2,7 +2,21 @@
 ### 1. Codificación de ejemplares y soluciones
 #### - Considerando el formato especificado en TSPLIB, implementa un algoritmo que lea un archivo con ejemplares para el TSP.
   Empleando la documentación de la librería [TSPLIB] http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf nos basamos en el formato de los archivos para su lectura en _python_; cada archivo consiste en una parte de especificaciones y una parte para los datos. 
-  La primera parte especifica las características del ejemplar con el formato _palabra clave : valor_, donde todas las palabras claves que se pueden utilizar, son: NAME, TYPE, COMMENT, DIMENSION, CAPACITY, EDGE_WEIGHT_TYPE, EDGE_WEIGHT_FORMAT, NODE_COORD_TYPE, DISPLAY_DATA_TYPE, EOF, entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo)
+  
+  La primera parte especifica las características del ejemplar con el formato _palabra clave : valor_, donde todas las palabras claves que se pueden utilizar, son: 
+  - NAME
+  - TYPE
+  - COMMENT
+  -  DIMENSION
+  -  CAPACITY
+  -  EDGE_WEIGHT_TYPE
+  -  EDGE_WEIGHT_FORMAT
+  -   NODE_COORD_TYPE
+  -   DISPLAY_DATA_TYPE
+  -   EOF,
+    Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo).
+
+En la sección de datos, las primeras columnas que tenemos corresponden al _número de nodo_,y sus coordenadas. Los ejemplares utilizados fueron definidos en $\mathbb{R}
 ## Ejercicio 2:
 
 Primero, implementamos un operador de intercambio de dos elementos consecutivos para permutaciones:
