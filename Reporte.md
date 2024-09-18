@@ -1,7 +1,7 @@
 ## Ejercicio 1
 ### 1. Codificación de ejemplares y soluciones
 #### - Considerando el formato especificado en TSPLIB, implementa un algoritmo que lea un archivo con ejemplares para el TSP.
-  Empleando la documentación de la librería [TSPLIB] (http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf)
+  Empleando la documentación de la librería [TSPLIB] http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf
 
 ## Ejercicio 2:
 
