@@ -15,9 +15,27 @@
   -   DISPLAY_DATA_TYPE
   -   EOF
     
-Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo).
+Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo). La función que devuelve los datos del ejemplar es `lectura_ejemplar()` y además imprime en pantalla los atributos de interés, que son los que corresponden al nombre, dimensión del ejemplar.
 
-En la sección de datos, las primeras columnas que tenemos corresponden al _número de nodo_,y sus coordenadas. Los ejemplares utilizados fueron definidos en $\mathbb{R}^{2}$, por lo que sus coordenadas son en _x_ y en _y_. En otros ejemplares da información adicional. Entonces con la librería `pandas` guardamos la información mencionada en un _DataFrame_, adicionalmente, en este arreglo podemos sumar en valor absoluto a _x_ y _y_ en otra columna, y ver a qué renglón (nodo) le corresponde el arista con mayor peso. 
+En la sección de datos, las primeras columnas que tenemos corresponden al _número de nodo_,y sus coordenadas. Los ejemplares utilizados fueron definidos en $\mathbb{R}^{2}$, por lo que sus coordenadas son en _x_ y en _y_. En otros ejemplares da información adicional. Entonces con la librería `pandas` guardamos la información mencionada en un _DataFrame_. 
+
+A partir de los _n_ nodos y sus coordenadas, calculamos las distancias de _i_ a _j_ $d_{ij}$ para cualesquiera dos nodos de la gráfica, y las almacenamos en una matriz de $ n \cdot n$ que es la _matriz de distancias_; es importante guardarla en una función para llamarla las veces necesarias y no realizar los cálculos una y otra vez, sino que sólo los consultaríamos, esta matriz estará disponible con la función `matriz_distancias()`, cuya métrica será la euclidiana en $\mathbb{R}^{2}$, pues así lo especifican los ejemplares.
+
+### - Implementa un algoritmo para generar soluciones aleatorias para el TSP, utilizando algún esquema de codificación basado en permutaciones
+
+Para el ejemplar con _n_ nodos (ciudades), las soluciones se codificarán como vectores de n entradas. Donde los elementos en el arreglo son el número que identifica a cada uno de los nodos (ciudad) en el ejemplar y sus posiciones en el vector corresponden alorden en el cual se recorrerán las ciudades. 
+
+Por otra parte, en un ejemplar de tamaño _n_ se tienen $n!$ permutaciones, para reducir este espacio fijamos a la primera ciudad (que se identifica con el _nodo 1_) y ya sólo tendríamos $(n_1)!$ permutaciones posibles. Observemos que entre más grande sea $n$ menos posibilidades hay que un programa te devuelva la misma permutación dos o más veces. 
+
+Se utilizó la función _permutation()_ de la librería `numpy` para obtener permutaciones entre los números del 2 a _n_.
+
+### - Implementa un algoritmo para evaluar una solución (permutación).
+
+Dada una solución al ejemplar, en el esquema de codificación anterior:
+
+_________________         _________
+|$c_1$|$c_{1+i}$| $ldots$ |c_{1+k}|
+_________________         _________
 
 ## Ejercicio 2:
 
