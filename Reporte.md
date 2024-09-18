@@ -15,7 +15,7 @@
   -   DISPLAY_DATA_TYPE
   -   EOF
     
-Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo). La función que devuelve los datos del ejemplar es `lectura_ejemplar()` y además imprime en pantalla los atributos de interés, que son los que corresponden al nombre, dimensión del ejemplar.
+Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo). La función que devuelve los datos del ejemplar es `lectura_archivo()` y además imprime en pantalla los atributos de interés, que son los que corresponden al nombre, dimensión del ejemplar.
 
 En la sección de datos, las primeras columnas que tenemos corresponden al _número de nodo_,y sus coordenadas. Los ejemplares utilizados fueron definidos en $\mathbb{R}^{2}$, por lo que sus coordenadas son en _x_ y en _y_. En otros ejemplares da información adicional. Entonces con la librería `pandas` guardamos la información mencionada en un _DataFrame_. 
 
@@ -50,16 +50,26 @@ $$
 La implementación de este algoritmo se encuentra en la función `evaluar_sol()` que recibe de parámetros el archivo con el ejemplar y una solución para éste en forma de una lista (vector) de números naturales.
 
 ## Para probar las implementaciones, deberán generar dos programas (ejecutables desde consola)
-### Programa que reciba como parámetros (en la misma línea de ejecución):
-#### - Nombre del archivo con los datos del ejemplar
-#### - Semilla del generador de aleatorio
-#### - Nombre del archivo con los datos de la solución generada 
+#### Programa que reciba como parámetros (en la misma línea de ejecución):
+- Nombre del archivo con los datos del 
+- Semilla del generador de aleatorio
+- Nombre del archivo con los datos de la solución generada 
 
-## Como salida, deberá imprimir algunos datos generales del ejemplar leído. Por ejemplo:
-### - Nombre del ejemplar (archivo)
-### - Tamaño del ejemplar (número de ciudades)
-### - Arista de mayor peso (o distancia más grande)
-### - 
+#### Como salida, deberá imprimir algunos datos generales del ejemplar leído. Por ejemplo:
+- Nombre del ejemplar (archivo)
+- Tamaño del ejemplar (número de ciudades)
+- Arista de mayor peso (o distancia más grande)
+- Ejemplo de solución (solo los primeras y los últimas 3 elementos de la permutación)
+- En caso de que se haya indicado, se deberá escribir en un archivo de texto la solución generada (completa)
+
+Para esta función llamada `lectura_ejemplar()` necesitamos de los parámetros: el nombre del archivo con el ejemplar, una semilla para generar la solución aleatoria y un nombre para el archivo donde se guardará la solución generada. Los parámetros de semilla y nombre del archivo con la solución son opcionales, de no ser especificados los valores por default que tomarán será el número aleatorio basado en la fecha, generado por la función `time.time()` de la librería `time`. 
+
+Luego, dentro de este mismo archivo se llamarán a las funciones `lectura_archivo()`, `matriz_distancias()`, `np.permutation()` y `evaluar_sol()`. 
+
+* `lectura_archivo()`: 
+* `matriz_distancias()`
+* `np.permutation()`
+* `evaluar_sol()`
 
 # Ejercicio 2:
 
