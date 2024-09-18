@@ -1,7 +1,7 @@
-## Ejercicio 1
-### 1. Codificación de ejemplares y soluciones
+# Ejercicio 1
+## 1. Codificación de ejemplares y soluciones
 #### - Considerando el formato especificado en TSPLIB, implementa un algoritmo que lea un archivo con ejemplares para el TSP.
-  Empleando la documentación de la librería [TSPLIB] http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf nos basamos en el formato de los archivos para su lectura en _python_; cada archivo consiste en una parte de especificaciones y una parte para los datos. 
+  Empleando la documentación de la librería [TSPLIB](http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf)nos basamos en el formato de los archivos para su lectura en _python_; cada archivo consiste en una parte de especificaciones y una parte para los datos. 
   
   La primera parte especifica las características del ejemplar con el formato _palabra clave : valor_, donde todas las palabras claves que se pueden utilizar, son: 
   - NAME
@@ -36,15 +36,32 @@ Dada una solución al ejemplar, en el esquema de codificación anterior y empeza
 Recordemos que estos datos de distancias no los tenemos que calcular cada vez que se ejecute el programa, sino que los podemos consultar en la matriz de distancias.
 
 Por ejemplo si el ejemplar contiene 3 ciudades: $c_1, c_2,c_3$ y la solución generada aleatoriamente es 1,3,2 entonces de la ciudad uno se visitará la ciudad tres, de la tres a la dos y de la ciudad dos volvemos a la ciudad 1. La distancia total de este recorrido será:
+
 $$
 d_{Total} = d(c_1, c_3) + d(c_3 , c_2) + d(c_2,c_1)
 $$
+
 con:
 
 $$
-d(c_i , c_j ) = \sqrt{(x_i - x_j )^2 + (y_i + y_j)^2}
+d(c_i , c_j ) = \sqrt{(x_i - x_j )^2 + (y_i - y_j)^2}
 $$
-## Ejercicio 2:
+
+La implementación de este algoritmo se encuentra en la función `evaluar_sol()` que recibe de parámetros el archivo con el ejemplar y una solución para éste en forma de una lista (vector) de números naturales.
+
+## Para probar las implementaciones, deberán generar dos programas (ejecutables desde consola)
+### Programa que reciba como parámetros (en la misma línea de ejecución):
+#### - Nombre del archivo con los datos del ejemplar
+#### - Semilla del generador de aleatorio
+#### - Nombre del archivo con los datos de la solución generada 
+
+## Como salida, deberá imprimir algunos datos generales del ejemplar leído. Por ejemplo:
+### - Nombre del ejemplar (archivo)
+### - Tamaño del ejemplar (número de ciudades)
+### - Arista de mayor peso (o distancia más grande)
+### - 
+
+# Ejercicio 2:
 
 Primero, implementamos un operador de intercambio de dos elementos consecutivos para permutaciones:
 1. Definimos una función llamada `operadorCambioConsecutivo()` que recibe como parámetros una permutación (en formato de lista) y un índice.
