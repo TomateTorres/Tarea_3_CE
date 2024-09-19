@@ -1,7 +1,7 @@
 # Ejercicio 1
 ## 1. Codificación de ejemplares y soluciones
 #### - Considerando el formato especificado en TSPLIB, implementa un algoritmo que lea un archivo con ejemplares para el TSP.
-  Empleando la documentación de la librería [TSPLIB](http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf)nos basamos en el formato de los archivos para su lectura en _python_; cada archivo consiste en una parte de especificaciones y una parte para los datos. 
+  Empleando la documentación de la librería [TSPLIB](http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf) nos basamos en el formato de los archivos para su lectura en _python_; cada archivo consiste en una parte de especificaciones y una parte para los datos. 
   
   La primera parte especifica las características del ejemplar con el formato _palabra clave : valor_, donde todas las palabras claves que se pueden utilizar, son: 
  - **NAME:** El nombre del problema
@@ -55,7 +55,7 @@ La implementación de este algoritmo se encuentra en la función `evaluar_sol()`
 
 ## Para probar las implementaciones, deberán generar dos programas (ejecutables desde consola)
 #### Programa que reciba como parámetros (en la misma línea de ejecución):
-- Nombre del archivo con los datos del 
+- Nombre del archivo con los datos del ejemplar
 - Semilla del generador de aleatorio
 - Nombre del archivo con los datos de la solución generada 
 
