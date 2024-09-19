@@ -66,8 +66,8 @@ Para esta función llamada `lectura_ejemplar()` necesitamos de los parámetros: 
 
 Luego, dentro de este mismo archivo se llamarán a las funciones `lectura_archivo()`, `matriz_distancias()`, `np.permutation()` y `evaluar_sol()`. 
 
-* `lectura_archivo()`: 
-* `matriz_distancias()`
+* `lectura_archivo()`: Utilizamos esta función y con el diccionario creado se imprimen en pantalla los valores de las palabras clave _NAME_ y _DIMENSION_, especificando que corresponden al nombre del ejemplar y a su número de ciudades.
+* `matriz_distancias()`: Esta la utilizaremos para encontrar la arista de mayor peso; buscamos $ max\{ d_{ij} : i,j=1, \ldots, n \}$ que es la entrada ij-ésima de la matriz, esto se obtuvo con `np.max()` Luego de identificar este valor encontramos de qué fila y columna se obtuvo
 * `np.permutation()`
 * `evaluar_sol()`
 
