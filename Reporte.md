@@ -64,12 +64,40 @@ La implementación de este algoritmo se encuentra en la función `evaluar_sol()`
 
 Para esta función llamada `lectura_ejemplar()` necesitamos de los parámetros: el nombre del archivo con el ejemplar, una semilla para generar la solución aleatoria y un nombre para el archivo donde se guardará la solución generada. Los parámetros de semilla y nombre del archivo con la solución son opcionales, de no ser especificados los valores por default que tomarán será el número aleatorio basado en la fecha, generado por la función `time.time()` de la librería `time`. 
 
-Luego, dentro de este mismo archivo se llamarán a las funciones `lectura_archivo()`, `matriz_distancias()`, `np.permutation()` y `evaluar_sol()`. 
+Luego, dentro de este mismo archivo se llamarán de inicio a las funciones `lectura_archivo()`, `matriz_distancias()`, `np.permutation()` y `evaluar_sol()`. 
 
 * `lectura_archivo()`: Utilizamos esta función y con el diccionario creado se imprimen en pantalla los valores de las palabras clave _NAME_ y _DIMENSION_, especificando que corresponden al nombre del ejemplar y a su número de ciudades.
-* `matriz_distancias()`: Esta la utilizaremos para encontrar la arista de mayor peso; buscamos $ max\{ d_{ij} : i,j=1, \ldots, n \}$ que es la entrada ij-ésima de la matriz, esto se obtuvo con `np.max()` Luego de identificar este valor encontramos de qué fila y columna se obtuvo
-* `np.permutation()`
-* `evaluar_sol()`
+* `matriz_distancias()`: Esta la utilizaremos para encontrar la arista de mayor peso; buscamos $ max \{ d_{ij} : i,j=1, \ldots, n \} $ que es la entrada ij-ésima de la matriz, y sus 
+valores correspondientes de _i_ y de _j_ . Para esto, creamos la función `arista_mayor()` que recibirá de parámetro la matriz de distancias. Al ser una matriz cuadrada, 
+consultamos su número de columnas y éste será también su número de renglones, _n_. Inicializamos 4 variables para guardar los valores de _i,j_, el mejor valor y la solución activa; dado que es una matriz con entradas 
+no negativas (por ser distancias) las podemos iniciar con algún valor negativo, será -1. 
+Después iteramos sobre las columnas y los renglones, comparamos el valor de la solución activa con el mejor valor encontrado y de ser mejor, 
+la solución activa pasa a ser la mejor y guardamos los valores de _i_ y _j_ de donde encontramos ese valor máximo; nos quedamos con el obtenido
+al final de las iteraciones. Imprimimos en pantalla la arista de mayor peso y entre cuáles nodos (i,j) se encuentra.
+
+* `np.permutation()`: Creamos un arreglo aleatorio de n entradas, fijando la primera que será 1 y haciendo permutaciones entre los numeros naturales desde 2 hasta n.
+imprimimos en pantalla los primeros 3 elementos y loz últimos tres, accedemos a éstos con los índices negativos -3,-2,-1 del arreglo. 
+
+* `evaluar_sol()`: Evaluamos la solución generada aleatoriamente e imprimimos ese valor en pantalla.
+
+Tanto el diccionario, la solución generada y su evaluación las escribimos en un archivo .txt con el nombre deseado. Se realizó con las funciones
+`open()` y `write()`
+
+#### Programa reciba como parámetros (en la misma línea de ejecución) :
+- Nombre del archivo con los datos del ejemplar 
+- Nombre del archivo con los datos de la solución a evaluar 
+
+#### Como salida, deberá imprimir algunos datos generales del ejemplar leído. Por ejemplo:
+- Nombre del ejemplar (archivo) 
+- Tamaño del ejemplar (número de ciudades)
+- Costo de la solución 
+
+
+La función se llamará ¿? y nuevamente, dentro de ella llamaremos de inicio a las funciones `lectura_archivo()`y `evaluar_sol()`.
+* Con la función `lectura_archivo()` imprimimos el nombre del ejemplar y el tamaño del ejemplar.
+* Adicionalmente, creamos una función llamada `leer_sol()` que recibe de parámetro el archivo donde se encuentra la solución. De primer instancia nos fijamos si en las primeras 
+líneas se redactó algún atributo del ejemplar con que se hizo la solución. Siguiendo el formato TSPLIB, buscamos el caracter especial ":" y la información la ponemos en el diccionario que se imprimirá en pantalla.
+Después en una lista vacía se van a ir anexando los valores de la permutación, luego esta solución y el nombre del ejemplar los metemos de parámetro en `evaluar_sol()`, que imprime la función de costo en pantalla.
 
 # Ejercicio 2:
 
