@@ -100,8 +100,8 @@ Tanto el diccionario, la solución generada y su evaluación las escribimos en u
 La función se llamará `lectura_sol()` y nuevamente, dentro de ella llamaremos de inicio a las funciones `lectura_archivo()`y `evaluar_sol()`.
 * Con la función `lectura_archivo()` imprimimos el nombre del ejemplar y el tamaño del ejemplar.
 * Adicionalmente, creamos una función llamada `leer_sol()` que recibe de parámetro el archivo donde se encuentra la solución. De primer instancia nos fijamos si en las primeras 
-líneas se redactó algún atributo del ejemplar con que se hizo la solución. Siguiendo el formato TSPLIB, buscamos el caracter especial ":" y la información la ponemos en el diccionario que se imprimirá en pantalla.
-Después en una lista vacía se van a ir anexando los valores de la permutación, luego esta solución y el nombre del ejemplar los metemos de parámetro en `evaluar_sol()`, que imprime la función de costo en pantalla.
+líneas se redactó algún atributo del ejemplar con que se hizo la solución. Siguiendo el formato TSPLIB, buscamos el caracter especial ":" y la información (de existir) la ponemos en el diccionario que se imprimirá en pantalla.
+Después removemos los caracteres especiales de las siguientes cadenas y anexamos únicamente los enteros restantes a una lista que llamaremos solucion, luego esta solución y el nombre del ejemplar los metemos de parámetro en `evaluar_sol()`, que imprime la función de costo en pantalla.
 
 # Ejercicio 2:
 
