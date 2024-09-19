@@ -22,7 +22,7 @@ La función que realiza el procedimiento anterior es `lectura_TSP(ejemplar)`, qu
 
 A partir de los _n_ nodos y sus coordenadas, calculamos las distancias de _i_ a _j_ $d_{ij}$ para cualesquiera dos nodos de la gráfica, y las almacenamos en una matriz de  $n\cdot n$ que es la _matriz de distancias_; es importante guardarla en una función para llamarla las veces necesarias y no realizar los cálculos una y otra vez, sino que sólo los consultaríamos, esta matriz estará disponible con la función `matriz_distancias()`, cuya métrica será la euclidiana en $\mathbb{R}^{2}$, pues así lo especifican los ejemplares.
 
-Empleando el hecho que $d(i,j) = d(j,i)$ reducimos la complejidad computacional del problema. Pues $d(1,j) = d(j,1)$ y así nos queda una matriz de $(n-1) \cdot (n-1)$ luego, $d(2,j) = d(i,2)$ y así sucesivamente. Por lo que sólo estaríamos calvulando la mitad triangular superior y usándola para completar el resto.
+Empleando el hecho que $d(i,j) = d(j,i)$ reducimos la complejidad computacional del problema. Pues $d(1,j) = d(j,1)$ y así nos queda una matriz de $(n-1) \cdot (n-1)$ luego, $d(2,j) = d(i,2)$ y así sucesivamente. Por lo que sólo estaríamos calculando la mitad triangular superior derecha y usándola para completar el resto.
 
 ### - Implementa un algoritmo para generar soluciones aleatorias para el TSP, utilizando algún esquema de codificación basado en permutaciones
 
