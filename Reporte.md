@@ -18,7 +18,8 @@ Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observam
 
 En la sección de datos, las primeras columnas que tenemos corresponden al _número de nodo_,y sus coordenadas. Los ejemplares utilizados fueron definidos en $\mathbb{R}^{2}$, por lo que sus coordenadas son en _x_ y en _y_. En otros ejemplares da información adicional. Entonces con la librería `pandas` guardamos la información mencionada en un _DataFrame_. 
 
-La función que realiza el procedimiento anterior es `lectura_TSP(ejemplar)`, que recibe de parámetro el archivo del ejemplar a leer y devuelve un diccionario con sus características y una tabla con los nodos y sus coordenadas.
+La función que realiza el procedimiento anterior es `lectura_TSP(ejemplar)`, que recibe de parámetro un ejemplar de TSP con el formato especificado en TSPLIB y de parámetro opcional si se quiere imprimir en pantalla el nombre y la dimension del ejemplar; el valor por default es False, es decir no se imprime y de sí querer que se impriman en pantalla se coloca True. 
+La función devuelve un diccionario con sus características y una tabla con los nodos y sus coordenadas.
 
 A partir de los _n_ nodos y sus coordenadas, calculamos las distancias de _i_ a _j_ $d_{ij}$ para cualesquiera dos nodos de la gráfica, y las almacenamos en una matriz de  $n\cdot n$ que es la _matriz de distancias_; es importante guardarla en una función para llamarla las veces necesarias y no realizar los cálculos una y otra vez, sino que sólo los consultaríamos, esta matriz estará disponible con la función `matriz_distancias()`, cuya métrica será la euclidiana en $\mathbb{R}^{2}$, pues así lo especifican los ejemplares.
 
