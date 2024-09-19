@@ -4,16 +4,15 @@
   Empleando la documentación de la librería [TSPLIB](http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp95.pdf)nos basamos en el formato de los archivos para su lectura en _python_; cada archivo consiste en una parte de especificaciones y una parte para los datos. 
   
   La primera parte especifica las características del ejemplar con el formato _palabra clave : valor_, donde todas las palabras claves que se pueden utilizar, son: 
-  - NAME
-  - TYPE
-  - COMMENT
-  -  DIMENSION
-  -  CAPACITY
-  -  EDGE_WEIGHT_TYPE
-  -  EDGE_WEIGHT_FORMAT
-  -   NODE_COORD_TYPE
-  -   DISPLAY_DATA_TYPE
-  -   EOF
+ - NAME: El nombre del problema
+ - TYPE: El tipo de problema, como TSP, ATSP, CVRP, etc. (En nuestro caso todos son TSP)
+ -COMMENT: Comentarios adicionales, como detalles o descripciones. (En algunos casos indica la ruta óptima encontrada)
+ -DIMENSION: El número total de nodos o ciudades
+ -CAPACITY: En problemas como CVRP, representa la capacidad del vehículo. (Opcional)
+ - EDGE_WEIGHT_TYPE: Define cómo se calculan las distancias entre nodos ( En nuestro caso todos se calculan con la métrica euclidiana en dos dimensiones)
+ -EDGE_WEIGHT_FORMAT: Especifica el formato de las distancias 
+ -NODE_COORD_TYPE: Indica el tipo de coordenadas usadas para representar las posiciones de los nodos (por ejemplo, 2D o 3D).
+ -DISPLAY_DATA_TYPE: Por default son en coordenadas
     
 Entre otros que pueden ser opcionales según el ejemplar. Por lo tanto, observamos que dependiendo del archivo pueden variar los atributos que se vean mencionados, entonces no podemos empezar a leer el archivo desde una línea en particular. Sin embargo, notemos que cada una de estas palabras clave tiene un caracter en común, ":". Nos basamos en esta observación para almacenar las características del ejemplar en un diccionario, pues al momento de leer el archivo, si encuentra el caracter ":", va a dividir la cadena que esté leyendo en dos: lo que haya antes de los dos puntos (la palabra clave) y lo que exista después (el valor asociado a este atributo). La función que devuelve los datos del ejemplar es `lectura_archivo()` y además imprime en pantalla los atributos de interés, que son los que corresponden al nombre, dimensión del ejemplar.
 
