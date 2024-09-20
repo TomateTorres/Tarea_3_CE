@@ -5,10 +5,15 @@ Alguna versión de python superior a la 3.1, la paquetería ´pandas´, ´numpy�
 
 ## Funciones
 ### Para descargar los archivos de los ejemplares en Google colab se tiene que ejecutar la celda:
+
 !wget https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp
+
 !wget https://raw.githubusercontent.com/FridaVargas/tsp/main/eil51.tsp
+
 !wget https://raw.githubusercontent.com/FridaVargas/tsp/main/ch130.tsp
+
 !wget https://raw.githubusercontent.com/FridaVargas/tsp/main/berlin52.tsp
+
 !wget https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp
 
 ### para descargarlo en VSC o algún otro IDE:
@@ -17,9 +22,13 @@ import requests
 
 urls = [
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp",
+    
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/eil51.tsp",
+    
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/ch130.tsp",
+    
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/berlin52.tsp",
+    
     "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp"
 ]
 
