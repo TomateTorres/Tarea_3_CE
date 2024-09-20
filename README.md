@@ -18,7 +18,7 @@ Alguna versión de python superior a la 3.1, la paquetería ´pandas´, ´numpy�
 
 ### para descargarlo en VSC o algún otro IDE:
 
-import requests
+´import requests
 
 urls = [
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp",
@@ -35,7 +35,7 @@ for url in urls:
     response = requests.get(url)
     with open(filename, 'wb') as f:
         f.write(response.content)
-    print(f"Archivo {filename} descargado.")
+    print(f"Archivo {filename} descargado.")´
     
 ### 1. `lectura_TSP(ejemplar, imprimir=False)`
 
