@@ -177,6 +177,11 @@ Como podemos ver, si bien consideramos una solución inicial, tambien estamos co
 - OperadorNoConsecutivo()
 - OperadorInvParticion()
 
+Sin embargo, las vecindades que se usaron fueron al fijar un tipo de vecindad definido por un operador ( OperadorInvParticion() ) se crearon 
+tres vecindades de diferentes tamaños, la primera es la de menor número de vecinos y la última la de mayor. Esto se hizo como respuesta a que el algoritmo 
+se tardaba mucho tiempo generando la vecindad completa definida por un operador; al generar subvecindades de un mismo operador se pudo disminuir el tiempo
+de ejecución, empleando la idea del algoritmo que se describirá a continuación.
+
 Veamos ahora como tal los pasos del algoritmo: 
 
 ### 1. Inicialización:
