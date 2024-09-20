@@ -124,18 +124,156 @@ Finalmente, implementamos un operador que parte a la lista en dos partes y las i
 4. Si el índice proporcionado es válido, dividimos la lista en dos partes: la primera parte va desde el primer elemento (que tiene índice `0`) hasta el índice dado y la segunda desde `indice + 1` al final de la lista. Se retorna la lista modificada.
 
 # Ejercicio 3:
-### Considera el siguiente algoritmo: Búsqueda de Descenso por Vecindades Variables
-El algoritmo anterior es un método totalmente determinista, 
-sólo depende del punto de inicio; una vez que se llega al óptimo local 
-en todas las vecindades, el algoritmo se detendría.
+## Considera el siguiente algoritmo: Búsqueda de Descenso por Vecindades Variables
+
+**Entrada:**
+- s_ini: Solución Inicial
+
+**Salida:**
+- Mejor solución encontrada
+
+1. s = s_ini
+2. l = 1
+3. Mientras l <= MAX_VECINDADES:
+   a. Generar el mejor s∈N_l(s)
+   b. Si f(s') < f(s) Entonces:
+      i. s = s'
+      ii. l = 1
+   c. Si no:
+      i. l = l + 1
+4. Devolver s
+
+***Nota:*** En este algoritmo se considera que aunque en las vecindades (`Nl`, `1 <= l <= MAX_VECINDADES`) pueden ser un parámetro del algoritmo, para la implementación puede considerar que las vecindades son fijas. 
+***Nota:*** En estos algoritmos (El de arriba y el modificado que haremos) se asume un grafo completo. 
+
+El algoritmo anterior es un método totalmente determinista, sólo depende del punto de inicio; una vez que se llega al óptimo local en todas las vecindades, el algoritmo se detendrá. 
+
+Vamos entonces a hacerle unas modificaciones pertinentes para no atorarnos en óptimos locales, para ello haremos lo siguiente: 
 
 ## Propón modificaciones al algoritmo anterior para:
  - ### Continuar con la búsqueda (después de haber llegado a un óptimo local). Al menos un paso debería ser estocástico.
  - ### Criterio(s) de término, para garantizar que la búsqueda termine.
  - ### ¿En qué orden se deberían evaluar las vecindades?
 
-## Implementa el algoritmo con las modificaciones que indicaste, y utilizando las implementaciones de los ejercicios 1 y 2.
 
+Primero que nada, lo que haremos es agregar mas párametros de entrada. La salida cambia un poquito porque al final tenemos una mejor solución, pero junto a su valor en la función. 
+
+### Entrada:
+- solucionInicial: Una solución inicial (un conjunto de variables o configuración inicial para el problema).
+- tipoVecindad: Define el tipo de vecindad (estrategia o movimiento) que se utilizará para generar las soluciones vecinas.
+
+### Salida
+mejorSolucion
+mejorValor
+
+Como podemos ver, si bien consideramos una solución inicial, tambien estamos considerando un nuevo parámetro que nos dice el tipo de vecindad que usaremos para generar nuestras soluciones vecinas. Estas vecindades vendrán dadas a partir de lo requerido en el ejercicio 2, es decir consideraremos vecindades con los operadores: 
+- operadorCambioConsecutivo
+- OperadorNoConsecutivo()
+- OperadorInvParticion()
+
+Veamos ahora como tal los pasos del algoritmo: 
+
+### 1. Inicialización:
+- mejorSolucion ← solucionInicial: Asignamos la solución inicial como la mejor solución actual.
+
+- Definir los parámetros de control:
+  - itersMAX ← 1000: Número máximo de iteraciones (Garantiza que el algoritmo no se ejecute de manera indefinida). 
+
+  - numVecindad ← 0: Vecindad actual (A medida que no se encuentran mejoras en una vecindad, el algoritmo avanza a vecindades más alejadas de nuestra solución actual. Este contador se reinicia cuando se encuentra una mejora para reiniciar la exploración desde las vecindades más cercanas).
+
+  - itersSinMejorarMAX ← 100`: Máximo número de iteraciones sin mejora (Tiene un proposito similar a itersMAX: Si el algoritmo no encuentra ninguna mejora en itersSinMejorarMAX iteraciones consecutivas, se asume que ha llegado a un óptimo local, o que no se pueden encontrar soluciones significativamente mejores. Al alcanzar este límite, el algoritmo se detiene). 
+
+  - itersSinMejorar ← 0: Contador de iteraciones sin mejora (Se utiliza para decidir si se debe continuar la búsqueda o aplicar una perturbación, o si ya se ha alcanzado el límite de iteraciones sin mejora. Si este contador alcanza el valor de itersSinMejorarMAX, se considera que no se puede mejorar más).
+
+  - iteraciones ← 0: Contador de iteraciones.
+
+  - perturbaciones ← 0: Contador de perturbaciones aplicadas (Controla cuántas veces se ha intentado salir de un óptimo local a través de una **perturbación estocástica**. Si el número de perturbaciones alcanza perturbacionesMAX, el algoritmo se detiene.)
+
+  - perturbacionesMAX ← 5: Máximo número de perturbaciones permitidas.
+
+ En resumen. en este apartado lo que hacemos es agarrar nuestra solución inicial y tomarla como nuestra mejor solución actual y posterioremente definir nuestros parametros de control. Estos parametros lo que harén es regular el comportamiento del proceso de búsqueda, controlando aspectos clave como el número de iteraciones, la cantidad de perturbaciones, y cuándo detener la búsqueda.
+
+ ***Nota:*** Nuestra **perturbación estocástica** funcionará intercambiando aleatoriamente dos elementos de la solución actual para escapar de un óptimo local, y así continuar buscando mejores soluciones en el espacio de búsqueda. Basicamente, dada una permutación, se intercambiarán dos indices de la permutación de manera aleatoria. 
+
+ 
+Vamos con lo que sigue: 
+
+
+ ### 2. Bucle Principal (Exploración por vecindades y perturbaciones):
+
+- Mientras **(iteraciones < itersMAX) Y (itersSinMejorar < itersSinMejorarMAX) Y (perturbaciones < perturbacionesMAX)**:
+
+Este bucle se ejecuta mientras no se hayan superado el número máximo de iteraciones (itersMAX), el número máximo de iteraciones sin mejora (itersSinMejorarMAX), ni el número máximo de perturbaciones (perturbacionesMAX). 
+
+  
+  #### a. Generar vecindad:
+  - Vecindad ← generarVecindadGeneral(mejorSolucion, tipoVecindad): Se genera una lista de soluciones vecinas a la mejorSolucion actual, según el tipo de vecindad elegido. 
+
+En cada iteración se genera una vecindad usando una función generarVecindadGeneral.
+
+#### b. Exploración de vecindades:
+  - Mientras **numVecindad ≤ longitud(Vecindad) - 1**:
+    
+    - Incrementar el número de iteraciones: iteraciones ← iteraciones + 1.
+    
+    - Seleccionar la vecindad actual: vecinos ← Vecindad[numVecindad].
+    
+    - Encontrar el primer vecino que mejore la solución actual: mejorVecino ← primVecinoMejorar(mejorSolucion, vecinos).
+    
+    - **Evaluar mejora**:
+      - Si **evaluar(mejorVecino) < evaluar(mejorSolucion)**:
+        - Actualizar la mejor solución: mejorSolucion ← mejorVecino.
+        - Reiniciar búsqueda desde la vecindad más pequeña: numVecindad ← 0.
+        - Reiniciar contador de iteraciones sin mejora: itersSinMejorar ← 0.
+      - Si **no mejora**:
+        - Incrementar contador de iteraciones sin mejora: itersSinMejorar ← itersSinMejorar + 1.
+        - Avanzar a la siguiente vecindad: numVecindad ← numVecindad + 1.
+
+En resumen, en esta parte:     
+  - Se exploran las vecindades de forma secuencial. Para cada vecindad:
+   1.  Se busca un "mejor vecino" que mejore la solución actual. Esta búsqueda se realiza con la función primVecinoMejorar, que encuentra el primer vecino que ofrezca una mejora.
+   2.  Si se encuentra una solución mejor (evaluada con la función evaluar), se actualiza la mejor solución y se reinicia la búsqueda en la primera vecindad.
+   3.  Si no hay mejora, se incrementa el contador de iteraciones sin mejora y se avanza a la siguiente vecindad.
+
+#### c. Perturbación estocástica (si no hay mejora en ninguna vecindad):
+  - Generar una perturbación en la mejor solución: s ← perturbacion_estocastica(mejorSolucion).
+  - Incrementar el número de perturbaciones: perturbaciones ← perturbaciones + 1.
+  - Considerar la perturbación como una iteración sin mejorar: itersSinMejorar ← itersSinMejorar + 1.
+
+  - **Evaluar solución perturbada**:
+    - Si **evaluar(s) < evaluar(mejorSolucion)**:
+      - Actualizar la mejor solución: mejorSolucion ← s.
+      - Reiniciar la búsqueda desde la vecindad más pequeña: numVecindad ← 0.
+
+
+En resumen: 
+- Si se recorren todas las vecindades sin encontrar mejoras, se aplica una **perturbación estocástica** a la mejor solución (una modificación aleatoria).
+- Si la solución perturbada es mejor que la mejor solución actual, se toma como la nueva mejor solución y se vuelve a explorar sus vecindades desde el principio.
+- Se contabiliza esta perturbación como una iteración sin mejorar.
+
+
+Finalmente: 
+
+### 3. Finalización:
+- Evaluar la mejor solución: mejorValor ← evaluar(mejorSolucion).
+
+
+### 4. Retornar resultados:
+- Retornar mejorSolucion y mejorValor.
+
+El algoritmo devuelve la mejor solución encontrada y su valor correspondiente (calculado con la función evaluar).
+
+
+Ahora bien, ¿En qué orden se deberían evaluar las vecindades? No lo dijimos explicitamente pero el orden de evaluación de las vecindades sigue un esquema secuencial, de vecindades más pequeñas a más grandes. Esta evaluación sigue el siguiente esquema: 
+
+1. **Se comienza evaluando vecindades pequeñas**.
+2. **Si no hay mejora**, se avanza a vecindades más grandes.
+3. **Si se encuentra una mejora**, se reinicia la búsqueda desde la vecindad más pequeña.
+4. **Si no hay mejora en ninguna vecindad**, se aplica una perturbación y se reinicia.
+
+  
+## Implementa el algoritmo con las modificaciones que indicaste, y utilizando las implementaciones de los ejercicios 1 y 2.
+La imnplementacion se puede ver en el notebook de jupyter. Se hace para todos los ejemplares proporcionados. 
 
 # Ejercicio 4: Experimentación
 
@@ -155,4 +293,6 @@ en todas las vecindades, el algoritmo se detendría.
 ### Analiza los resultados obtenidos, y concluye si consideras que la variante propuesta fue una buena elección o no. ¿Qué otras modificaciones se podrían realizar para intentar mejorar la búsqueda?
 
 La tabla obtenida fue la siguiente:
-![alt text](image.png)
+![alt text](image.png)    
+
+
