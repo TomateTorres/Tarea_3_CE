@@ -4,6 +4,7 @@
 - Torres Ochoa Maria Adelina
 - Vargas Bautista Frida Michelle
 
+
 # Ejercicio 1
 ## 1. Codificación de ejemplares y soluciones
 #### - Considerando el formato especificado en TSPLIB, implementa un algoritmo que lea un archivo con ejemplares para el TSP.
