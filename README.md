@@ -17,31 +17,31 @@ Alguna versión de python superior a la 3.1, la paquetería ´pandas´, ´numpy�
 !wget https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp
 
 ### para descargarlo en VSC o algún otro IDE:
-
-  import requests
-
-  urls = [
-    "https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp",
-    
-    "https://raw.githubusercontent.com/FridaVargas/tsp/main/eil51.tsp",
-    
-    "https://raw.githubusercontent.com/FridaVargas/tsp/main/ch130.tsp",
-    
-    "https://raw.githubusercontent.com/FridaVargas/tsp/main/berlin52.tsp",
-    
-    "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp]
-    
-  for url in urls:
-
-    filename = url.split("/")[-1]
-    
-    response = requests.get(url)
-    
-    with open(filename, 'wb') as f:
-    
-        f.write(response.content)
-        
-    print(f"Archivo {filename} descargado.")´
+      
+        import requests
+      
+        urls = [
+          "https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp",
+          
+          "https://raw.githubusercontent.com/FridaVargas/tsp/main/eil51.tsp",
+          
+          "https://raw.githubusercontent.com/FridaVargas/tsp/main/ch130.tsp",
+          
+          "https://raw.githubusercontent.com/FridaVargas/tsp/main/berlin52.tsp",
+          
+          "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp]
+          
+        for url in urls:
+      
+          filename = url.split("/")[-1]
+          
+          response = requests.get(url)
+          
+          with open(filename, 'wb') as f:
+          
+              f.write(response.content)
+              
+          print(f"Archivo {filename} descargado.")
     
 ### 1. `lectura_TSP(ejemplar, imprimir=False)`
 
@@ -108,15 +108,19 @@ Alguna versión de python superior a la 3.1, la paquetería ´pandas´, ´numpy�
 python
 ### Cargar un ejemplar y generar una solución aleatoria
 ejemplar = 'ch130.tsp'
+
 solucion = generar_sol_aleatoria(ejemplar)
 
 ### Evaluar la solución
 costo = evaluar_sol(ejemplar, solucion)
+
 print(f"Costo de la solución: {costo}")
 
 ### Buscar mejor solución
 mejor_solucion, mejor_valor = busqueda_por_vecindades(solucion, "CambioConsecutivo")
+
 print("Mejor solución:", mejor_solucion)
+
 print("Mejor valor:", mejor_valor)
 
 ## Esquemas disponibles: 
