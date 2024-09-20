@@ -282,6 +282,7 @@ La imnplementacion se puede ver en el notebook de jupyter. Se hace para todos lo
    - eil51
    - ch130
    - pr152
+   - pr72 (El nuevo)
 - #### Investiga y selecciona otro ejemplar de prueba: 
 
 ## Realiza al menos 10 repeticiones de tu implementación y genera una tabla con los resultados. Ejemplo:
@@ -295,4 +296,15 @@ La imnplementacion se puede ver en el notebook de jupyter. Se hace para todos lo
 La tabla obtenida fue la siguiente:
 ![alt text](image.png)    
 
+Ahora, recuerde que los mejores valores que se han encontrado para los ejemplares son los siguientes: 
+- berlin52: 7542
+- ch130: 6110
+- eil51: 426
+- pr152: 73682
+- pr72: 108159
 
+Es inmediato que los mejores valores que hemos obtenido estan muy lejos de las mejores soluciones que se han encontrado para los ejemplares (quizas la mejor que hemos obtenido es para eli51, pero igual, la diferencia es enorme). Asi, podemos concluir que la variante propuesta no ha sido lo mas sensato para hacer. Quizas lo que podamos hacer es diversificar la exploración, para ello podriamos considerar lo siguiente: 
+
+En lugar de intercambiar solo dos ciudades con la perturbación estocastica, podriuamos realizar múltiples intercambios o cambios más grandes para "sacudir" más la solución. Es decir, en lugar de hacer un solo intercambio de dos ciudades, podriamos realizar varios intercambios de manera aleatoria. Tambien podriamos tomar un segmento de la ruta y muoverlo a otra posición. Este tipo de perturbaciones podrian ayudar a acelerar la busqueda y diversificar nuestro espacio de busqueda. Tambien podriamos emplear la vieja confiable: **recocido simulado**, pues este introduce un enfoque probabilístico donde, en lugar de solo aceptar mejoras, a veces aceptas soluciones peores. Esto podría ayudar a salir de óptimos locales y puede ser más efectivo en algunos escenarios.
+
+Tambien podriamos buscar una forma para mejorar la solución inicial, pues si la solución inicial es de mala calidad, el algoritmo necesitará más iteraciones para mejorarla. 
