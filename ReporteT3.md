@@ -1,8 +1,8 @@
 <h1 style="text-align: center; font-size: 48px;">Tarea 3</h1>
 <h1 style="text-align: center; font-size: 48px; font-style: italic;">Los tres que mutan</h1>
-Rojas Romero Emmanuel Lucano 
-Torres Ochoa Maria Adelina
-Vargas Bautista Frida Michelle
+- Rojas Romero Emmanuel Lucano 
+- Torres Ochoa Maria Adelina
+- Vargas Bautista Frida Michelle
 
 # Ejercicio 1
 ## 1. Codificación de ejemplares y soluciones
