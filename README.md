@@ -18,9 +18,9 @@ Alguna versión de python superior a la 3.1, la paquetería ´pandas´, ´numpy�
 
 ### para descargarlo en VSC o algún otro IDE:
 
-import requests
+  import requests
 
-urls = [
+  urls = [
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp",
     
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/eil51.tsp",
@@ -31,7 +31,7 @@ urls = [
     
     "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp]
     
-for url in urls:
+  for url in urls:
 
     filename = url.split("/")[-1]
     
@@ -106,15 +106,15 @@ for url in urls:
 ## Ejemplo de Uso
 
 python
-# Cargar un ejemplar y generar una solución aleatoria
+### Cargar un ejemplar y generar una solución aleatoria
 ejemplar = 'ch130.tsp'
 solucion = generar_sol_aleatoria(ejemplar)
 
-# Evaluar la solución
+### Evaluar la solución
 costo = evaluar_sol(ejemplar, solucion)
 print(f"Costo de la solución: {costo}")
 
-# Buscar mejor solución
+### Buscar mejor solución
 mejor_solucion, mejor_valor = busqueda_por_vecindades(solucion, "CambioConsecutivo")
 print("Mejor solución:", mejor_solucion)
 print("Mejor valor:", mejor_valor)
