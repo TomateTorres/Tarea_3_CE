@@ -66,7 +66,8 @@ La implementación de este algoritmo se encuentra en la función `evaluar_sol()`
 - Ejemplo de solución (solo los primeras y los últimas 3 elementos de la permutación)
 - En caso de que se haya indicado, se deberá escribir en un archivo de texto la solución generada (completa)
 
-Para esta función llamada `lectura_ejemplar()` necesitamos de los parámetros: el nombre del archivo con el ejemplar, una semilla para generar la solución aleatoria y un nombre para el archivo donde se guardará la solución generada. Los parámetros de semilla y nombre del archivo con la solución son opcionales, de no ser especificados los valores por default que tomarán será el número aleatorio basado en la fecha, generado por la función `time.time()` de la librería `time`. 
+Para esta función llamada `lectura_ejemplar()` en principio necesitamos de los parámetros: nombre del archivo con el ejemplar, una semilla para generar la solución aleatoria y un nombre para el archivo donde se guardará la solución generada. El parámetro de semilla es opcional, de no ser especificado por default tomará el número aleatorio basado en la fecha, generado por la función `time.time()` de la librería `time`. 
+*nota:* Dado que las evaluaciones de la función se hacen casi inmediatamente una tras otra, la semilla que habíamos definido por default como `time.time()`, generaba los mismos vectores aleatorios. Se intentó usar una semilla con más precisión pero seguía sin generar cambios entre las soluciones creadas. Por ende, se decidió eliminar el parámetro de _semilla_.
 
 Luego, dentro de este mismo archivo se llamarán de inicio a las funciones `lectura_archivo()`, `matriz_distancias()`, `np.permutation()` y `evaluar_sol()`. 
 
@@ -144,7 +145,8 @@ en todas las vecindades, el algoritmo se detendría.
    - eil51
    - ch130
    - pr152
-- #### Investiga y selecciona otro ejemplar de prueba: 
+- #### Investiga y selecciona otro ejemplar de prueba:
+  pr76.tsp que es un ejemplar de TSP, con 76 nodos y utiliza distancia euclidiana en dos dimensiones.
 
 ## Realiza al menos 10 repeticiones de tu implementación y genera una tabla con los resultados. Ejemplo:
 
