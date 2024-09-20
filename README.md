@@ -18,7 +18,7 @@ Alguna versión de python superior a la 3.1, la paquetería ´pandas´, ´numpy�
 
 ### para descargarlo en VSC o algún otro IDE:
 
-´import requests
+import requests
 
 urls = [
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/pr152.tsp",
