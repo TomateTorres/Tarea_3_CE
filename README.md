@@ -30,11 +30,17 @@ urls = [
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/berlin52.tsp",
     
     "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp]
+    
 for url in urls:
+
     filename = url.split("/")[-1]
+    
     response = requests.get(url)
+    
     with open(filename, 'wb') as f:
+    
         f.write(response.content)
+        
     print(f"Archivo {filename} descargado.")´
     
 ### 1. `lectura_TSP(ejemplar, imprimir=False)`
