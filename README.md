@@ -29,9 +29,7 @@ urls = [
     
     "https://raw.githubusercontent.com/FridaVargas/tsp/main/berlin52.tsp",
     
-    "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp"
-]
-
+    "https://raw.githubusercontent.com/mastqe/tsplib/refs/heads/master/pr76.tsp]
 for url in urls:
     filename = url.split("/")[-1]
     response = requests.get(url)
