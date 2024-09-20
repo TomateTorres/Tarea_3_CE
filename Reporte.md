@@ -122,3 +122,35 @@ Finalmente, implementamos un operador que parte a la lista en dos partes y las i
 2. Creamos una nueva copia de la lista `permutacion` para no modificar la original y la guardamos en `nuevaPermutación`.
 3. Si el índice proporcionado no es válido, se retorna simplemente la copia de la lista original.
 4. Si el índice proporcionado es válido, dividimos la lista en dos partes: la primera parte va desde el primer elemento (que tiene índice `0`) hasta el índice dado y la segunda desde `indice + 1` al final de la lista. Se retorna la lista modificada.
+
+# Ejercicio 3:
+### Considera el siguiente algoritmo: Búsqueda de Descenso por Vecindades Variables
+El algoritmo anterior es un método totalmente determinista, 
+sólo depende del punto de inicio; una vez que se llega al óptimo local 
+en todas las vecindades, el algoritmo se detendría.
+
+## Propón modificaciones al algoritmo anterior para:
+ - ### Continuar con la búsqueda (después de haber llegado a un óptimo local). Al menos un paso debería ser estocástico.
+ - ### Criterio(s) de término, para garantizar que la búsqueda termine.
+ - ### ¿En qué orden se deberían evaluar las vecindades?
+
+## Implementa el algoritmo con las modificaciones que indicaste, y utilizando las implementaciones de los ejercicios 1 y 2.
+
+
+# Ejercicio 4: Experimentación
+
+### Prueba la implementación considerando 5 ejemplares:
+   - berlin52
+   - eil51
+   - ch130
+   - pr152
+- #### Investiga y selecciona otro ejemplar de prueba: 
+
+## Realiza al menos 10 repeticiones de tu implementación y genera una tabla con los resultados. Ejemplo:
+
+| Ejemplar     | Dimensión | Mejor valor f(x) | Valor promedio f(x) | Peor valor f(x) |
+|--------------|-----------|-------------------|----------------------|------------------|
+| Ejemplo 1    |           |                   |                      |                  |
+
+### Analiza los resultados obtenidos, y concluye si consideras que la variante propuesta fue una buena elección o no. ¿Qué otras modificaciones se podrían realizar para intentar mejorar la búsqueda?
+              
