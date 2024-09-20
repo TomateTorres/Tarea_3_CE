@@ -153,4 +153,6 @@ en todas las vecindades, el algoritmo se detendría.
 | Ejemplo 1    |           |                   |                      |                  |
 
 ### Analiza los resultados obtenidos, y concluye si consideras que la variante propuesta fue una buena elección o no. ¿Qué otras modificaciones se podrían realizar para intentar mejorar la búsqueda?
-              
+
+La tabla obtenida fue la siguiente:
+![alt text](image.png)
